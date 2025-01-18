@@ -94,6 +94,7 @@ int main()
             printf("Buzzer\n");
             tocar_nota(BUZZER_PINO, 200, 2000); // 200 Hz por 2 segundos
 
+            // 7) Reboot para o modo de gravação via USB
             printf("Entrando no modo de gravação via USB...\n");
             sleep_ms(1000); // Pequeno delay para garantir que a mensagem seja exibida antes do reboot
             printf("1...");
