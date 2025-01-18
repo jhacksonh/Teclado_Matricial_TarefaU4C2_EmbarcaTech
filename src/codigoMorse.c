@@ -60,7 +60,7 @@ void traco() {
     controlar_leds(COD_LED_VERMELHO, false, COD_LED_VERDE, true, COD_LED_AZUL, false);
     sleep_ms(500);
     controlar_leds(COD_LED_VERMELHO, false, COD_LED_VERDE, false, COD_LED_AZUL, false);
-    sleep_ms(500);
+    sleep_ms(300);
 }
 
 void letra_E() 
