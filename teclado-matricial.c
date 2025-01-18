@@ -6,6 +6,7 @@
 #include "tecladoMatricial4x4.h"
 #include "leds.h"
 #include "buzzer.h"
+#include "pico/bootrom.h"
 
 // Definição dos pinos e constantes
 #define LED_VERMELHO 13
@@ -42,13 +43,13 @@ int main()
             for (int i = 0; i < 4; i++)
             {
                 if (i == 0)
-                    controlar_leds(LED_VERMELHO, true,LED_VERDE, false,LED_AZUL, false);
+                    controlar_leds(LED_VERMELHO, true, LED_VERDE, false, LED_AZUL, false);
                 else if (i == 1)
-                    controlar_leds(LED_VERMELHO, false,LED_VERDE, true,LED_AZUL, false);
+                    controlar_leds(LED_VERMELHO, false, LED_VERDE, true, LED_AZUL, false);
                 else if (i == 2)
-                    controlar_leds(LED_VERMELHO, false,LED_VERDE, false,LED_AZUL, true);
+                    controlar_leds(LED_VERMELHO, false, LED_VERDE, false, LED_AZUL, true);
                 else
-                    controlar_leds(LED_VERMELHO,true,LED_VERDE, true,LED_AZUL, true);
+                    controlar_leds(LED_VERMELHO, true, LED_VERDE, true, LED_AZUL, true);
                 sleep_ms(500);
             }
             controlar_buzzer(BUZZER_PINO, true);
@@ -59,13 +60,50 @@ int main()
             break;
         case '#':
             printf("Tecla # pressionada\n");
-            controlar_leds(LED_AZUL,true,LED_VERDE, false,LED_AZUL, false);
+            controlar_leds(LED_VERMELHO, true, LED_VERDE, false, LED_AZUL, false);
             tocar(BUZZER_PINO, notas_imperial_march, duracoes_imperial_march, tamanho_imperial_march);
-            controlar_leds(LED_VERMELHO, false,LED_VERDE, false,LED_AZUL, false);
+            controlar_leds(LED_VERMELHO, false, LED_VERDE, false, LED_AZUL, false);
             break;
         case '*':
-            printf("Tecla * pressionada\n");
-            tocar_nota(BUZZER_PINO, 1000, 500);
+            // 1) Ligar LED verde (GPIO 11) – desligar as demais GPIOs
+            printf("led verde\n");
+            controlar_leds(LED_VERMELHO, false, LED_VERDE, true, LED_AZUL, false);
+            sleep_ms(1000); // Aguarda 1 segundo para visualizar a ação
+
+            // 2) Ligar LED azul (GPIO 12) - desligar as demais GPIOs
+            printf("led azul\n");
+            controlar_leds(LED_VERMELHO, false, LED_VERDE, false, LED_AZUL, true);
+            sleep_ms(1000);
+
+            // 3) Ligar LED vermelho (GPIO 13) - desligar as demais GPIOs
+            printf("led vermelho\n");
+            controlar_leds(LED_VERMELHO, true, LED_VERDE, false, LED_AZUL, false);
+            sleep_ms(1000);
+
+            // 4) Ligar os três LEDs (luz branca)
+            printf("led branco\n");
+            controlar_leds(LED_VERMELHO, true, LED_VERDE, true, LED_AZUL, true);
+            sleep_ms(1000);
+
+            // 5) Desligar todos os LEDs
+            printf("leds desligados\n");
+            controlar_leds(LED_VERMELHO, false, LED_VERDE, false, LED_AZUL, false);
+            sleep_ms(1000);
+
+            // 6) Acionar o buzzer por 2 segundos – emissão de sinal sonoro
+            printf("Buzzer\n");
+            tocar_nota(BUZZER_PINO, 200, 2000); // 200 Hz por 2 segundos
+
+            // 7) Reboot para o modo de gravação via USB
+            printf("Entrando no modo de gravação via USB...\n");
+            sleep_ms(1000); // Pequeno delay para garantir que a mensagem seja exibida antes do reboot
+            printf("1...");
+            sleep_ms(1000);
+            printf("2...");
+            sleep_ms(1000);
+            printf("3...");
+            sleep_ms(1000);
+            reset_usb_boot(0, 0); // Reboot para modo de gravação
             break;
         default:
             break;
