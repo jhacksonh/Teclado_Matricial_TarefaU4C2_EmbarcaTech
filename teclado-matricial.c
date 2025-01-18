@@ -26,6 +26,8 @@ void tocar(uint pino_Buzzer, int *notas, int *duracoes, int tamanho);
 
 char detectar_tecla(int pinos_linhas_teclado[4], int pinos_colunas_teclado[4]);
 
+void tocar_musica_mario();
+
 int main()
 {
     stdio_init_all();
@@ -36,6 +38,9 @@ int main()
         char tecla = detectar_tecla(pinos_linhas, pinos_colunas);
         switch (tecla)
         {
+        case '0':
+        tocar_musica_mario();
+            break;    
         case '1':
             int notas_imperial_march[] = {440, 440, 440, 349, 262, 440, 349, 262, 440,  // Primeira parte
                                           880, 880, 880, 698, 523, 440, 349, 262, 440}; // Segunda parte
@@ -137,6 +142,28 @@ void tocar(uint pino_Buzzer, int *notas, int *duracoes, int tamanho)
         }
         sleep_ms(50); // Pequena pausa entre notas
     }
+}
+
+void tocar_musica_mario() {
+
+    controlar_buzzer(BUZZER_PINO, true);
+
+    // Melodia do tema do Mario
+    int melodia[] = {
+        2637, 2637, 0, 2637, 0, 2093, 2637, 0,
+        3136, 0, 0, 0, 1568, 0,
+    };
+
+    // Duração das notas (tempo reduzido para acelerar a melodia)
+    int tempo[] = {
+        150, 150, 150, 150, 150, 150, 150, 150,
+        150, 150, 150, 150, 150, 150, 
+    };
+
+    const uint tamanho_melodia = 14;
+
+    tocar(BUZZER_PINO, melodia, tempo, tamanho_melodia);
+
 }
 
 // Função para detectar teclas pressionadas
