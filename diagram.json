@@ -154,5 +154,12 @@
     [ "r3:1", "bb1:34b.j", "", [ "$bb" ] ],
     [ "r3:2", "bb1:40b.j", "", [ "$bb" ] ]
   ],
+  "uart": [
+    {
+      "tx": "pico:1",
+      "rx": "pico:2",
+      "baudRate": 115200
+    }
+  ],
   "dependencies": {}
 }
