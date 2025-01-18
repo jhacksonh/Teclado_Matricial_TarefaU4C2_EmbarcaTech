@@ -69,6 +69,11 @@ int main()
             tocar(notas_imperial_march, duracoes_imperial_march, tamanho_imperial_march);
             controlar_leds(false, false, false);
             break;
+        case '*':
+            controlar_leds(false, true, false);
+            tocar(notas_imperial_march, duracoes_imperial_march, tamanho_imperial_march);
+            controlar_leds(false, false, false);
+            break;
         default:
             break;
         }
