@@ -7,6 +7,7 @@
 #include "leds.h"
 #include "buzzer.h"
 #include "pico/bootrom.h"
+#include "codigoMorse.h"
 
 // Definição dos pinos e constantes
 #define LED_VERMELHO 13
@@ -104,6 +105,9 @@ int main()
             printf("3...");
             sleep_ms(1000);
             reset_usb_boot(0, 0); // Reboot para modo de gravação
+            break;
+        case '8': 
+            codigoMorse();
             break;
         default:
             break;
