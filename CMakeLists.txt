@@ -8,7 +8,21 @@ set(sdkVersion 2.1.0)
 set(toolchainVersion 13_3_Rel1)
 set(picotoolVersion 2.1.0)
 set(picoVscode ${USERHOME}/.pico-sdk/cmake/pico-vscode.cmake)
-if (EXISTS ${picoVscode})
+if(EXISTS ${picoVscode})
+    include(${picoVscode})
+endif()
+# ====================================================================================
+# == DO NOT EDIT THE FOLLOWING LINES for the Raspberry Pi Pico VS Code Extension to work ==
+if(WIN32)
+    set(USERHOME $ENV{USERPROFILE})
+else()
+    set(USERHOME $ENV{HOME})
+endif()
+set(sdkVersion 2.1.0)
+set(toolchainVersion 13_3_Rel1)
+set(picotoolVersion 2.1.0)
+set(picoVscode ${USERHOME}/.pico-sdk/cmake/pico-vscode.cmake)
+if(EXISTS ${picoVscode})
     include(${picoVscode})
 endif()
 # ====================================================================================
@@ -61,7 +75,7 @@ set(sdkVersion 2.1.0)
 set(toolchainVersion 13_3_Rel1)
 set(picotoolVersion 2.1.0)
 set(picoVscode ${USERHOME}/.pico-sdk/cmake/pico-vscode.cmake)
-if (EXISTS ${picoVscode})
+if(EXISTS ${picoVscode})
     include(${picoVscode})
 endif()
 # ====================================================================================
@@ -77,28 +91,35 @@ pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(teclado-matricial teclado-matricial.c )
+add_executable(teclado-matricial
+    teclado-matricial.c
+    src/configGpios.c
+    src/tecladoMatricial4x4.c
+    src/leds.c
+    src/buzzer.c
+    )
 
 pico_set_program_name(teclado-matricial "teclado-matricial")
 pico_set_program_version(teclado-matricial "0.1")
 
 # Modify the below lines to enable/disable output over UART/USB
-pico_enable_stdio_uart(teclado-matricial 0)
-pico_enable_stdio_usb(teclado-matricial 0)
+pico_enable_stdio_uart(teclado-matricial 1)
+pico_enable_stdio_usb(teclado-matricial 1)
 
 # Add the standard library to the build
 target_link_libraries(teclado-matricial
-        pico_stdlib
-        hardware_pwm) # Adicionando suporte ao hardware_pwm
+    pico_stdlib
+    hardware_pwm) # Adicionando suporte ao hardware_pwm
 
 # Add the standard include files to the build
 target_include_directories(teclado-matricial PRIVATE
-  ${CMAKE_CURRENT_LIST_DIR}
+    ${CMAKE_CURRENT_LIST_DIR}
+    ${CMAKE_CURRENT_LIST_DIR}/includes/
 )
 
 # Add any user requested libraries
-target_link_libraries(teclado-matricial 
-        
-        )
+target_link_libraries(teclado-matricial
+
+)
 
 pico_add_extra_outputs(teclado-matricial)
