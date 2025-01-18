@@ -64,6 +64,11 @@ int main()
             break;
         case '2':
             break;
+        case '#':
+            controlar_leds(true, false, false);
+            tocar(notas_imperial_march, duracoes_imperial_march, tamanho_imperial_march);
+            controlar_leds(false, false, false);
+            break;
         default:
             break;
         }
