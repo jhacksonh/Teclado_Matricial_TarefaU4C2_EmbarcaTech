@@ -35,6 +35,7 @@ void controlar_leds(bool vermelho, bool azul, bool verde);
 void controlar_buzzer(bool ativar);
 char detectar_tecla();
 void tocar(int *notas, int *duracoes, int tamanho);
+void tocar_nota(int frequencia, int duracao);
 
 int main()
 {
@@ -65,14 +66,14 @@ int main()
         case '2':
             break;
         case '#':
+            printf("Tecla # pressionada\n");
             controlar_leds(true, false, false);
             tocar(notas_imperial_march, duracoes_imperial_march, tamanho_imperial_march);
             controlar_leds(false, false, false);
             break;
         case '*':
-            controlar_leds(false, true, false);
-            tocar(notas_imperial_march, duracoes_imperial_march, tamanho_imperial_march);
-            controlar_leds(false, false, false);
+            printf("Tecla * pressionada\n");
+            tocar_nota(1000, 500);
             break;
         default:
             break;
@@ -166,30 +167,27 @@ char detectar_tecla()
     return tecla_atual; // Retorna a tecla pressionada ou 'n'
 }
 
-void tocar(int *notas, int *duracoes, int tamanho)
-{
-    // Toca cada nota
-    for (int i = 0; i < tamanho; i++)
-    {
-        int frequencia = notas[i];
-        int duracao = duracoes[i];
-        if (frequencia > 0)
-        {
-            int slice_num = pwm_gpio_to_slice_num(BUZZER_PINO);
-            uint32_t freq_sistema = clock_get_hz(clk_sys);       // Frequência do sistema
-            uint16_t wrap_valor = freq_sistema / frequencia - 1; // Define o valor de wrap
-
-            pwm_set_wrap(slice_num, wrap_valor);
-            pwm_set_gpio_level(BUZZER_PINO, wrap_valor / 2); // Define duty cycle de 50%
-            pwm_set_enabled(slice_num, true);                // Ativa o PWM
-
-            sleep_ms(duracao);                 // Duração da nota
-            pwm_set_enabled(slice_num, false); // Desativa o PWM
-        }
-        else
-        {
-            sleep_ms(duracao); // Pausa (nota silenciosa)
-        }
+void tocar(int *notas, int *duracoes, int tamanho) {
+    for (int i = 0; i < tamanho; i++) {
+        tocar_nota(notas[i], duracoes[i]);
         sleep_ms(50); // Pequena pausa entre notas
+    }
+}
+
+
+void tocar_nota(int frequencia, int duracao) {
+    if (frequencia > 0) {
+        int slice_num = pwm_gpio_to_slice_num(BUZZER_PINO);
+        uint32_t freq_sistema = clock_get_hz(clk_sys);       // Frequência do sistema
+        uint16_t wrap_valor = freq_sistema / frequencia - 1; // Define o valor de wrap
+
+        pwm_set_wrap(slice_num, wrap_valor);
+        pwm_set_gpio_level(BUZZER_PINO, wrap_valor / 2); // Define duty cycle de 50%
+        pwm_set_enabled(slice_num, true);                // Ativa o PWM
+
+        sleep_ms(duracao);                 // Duração da nota
+        pwm_set_enabled(slice_num, false); // Desativa o PWM
+    } else {
+        sleep_ms(duracao); // Pausa (nota silenciosa)
     }
 }
