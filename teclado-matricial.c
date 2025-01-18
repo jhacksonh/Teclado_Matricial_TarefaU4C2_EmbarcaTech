@@ -35,6 +35,15 @@ void controlar_leds(bool vermelho, bool azul, bool verde);
 void controlar_buzzer(bool ativar);
 char detectar_tecla();
 void tocar(int *notas, int *duracoes, int tamanho);
+void codigo_morse();
+void letra_A();
+void letra_E();
+void letra_M();
+void letra_B();
+void letra_R();
+void letra_D();
+void letra_O();
+void letra_C();
 
 int main()
 {
@@ -63,6 +72,9 @@ int main()
             tocar(notas_imperial_march, duracoes_imperial_march, tamanho_imperial_march);
             break;
         case '2':
+            break;
+        case '8': 
+            codigo_morse();
             break;
         default:
             break;
@@ -182,4 +194,118 @@ void tocar(int *notas, int *duracoes, int tamanho)
         }
         sleep_ms(50); // Pequena pausa entre notas
     }
+}
+
+/*
+função: codigo_morse();
+
+Código morse:
+E -> um ponto 
+M -> dois traços
+B -> um traço, três pontos
+A -> um ponto, um traço
+R -> um ponto, um traço, um ponto
+C -> um traço, um ponto, um traço, um ponto
+A -> um ponto, um traço
+D -> um traço, dois pontos
+O -> três traços 
+
+Representação no código:
+um ponto -> led vermelho piscando por 500 ms
+um traço -> led verde piscando por 500 ms 
+tempo entre pontos e traços -> leds apagados por 300 ms 
+tempo entre letras -> leds apagados por 600 ms
+
+*/
+
+void codigo_morse() {
+    controlar_leds(false, false, false);
+
+    letra_E();
+    sleep_ms(600); 
+    letra_M();
+    sleep_ms(600);
+    letra_B();
+    sleep_ms(600);
+    letra_A();
+    sleep_ms(600);
+    letra_R();
+    sleep_ms(600);
+    letra_C();
+    sleep_ms(600);
+    letra_A();
+    sleep_ms(600);
+    letra_D();
+    sleep_ms(600);
+    letra_O(); 
+
+    controlar_leds(false, false, false); 
+}
+
+void ponto() {
+    controlar_leds(true, false, false);
+    sleep_ms(3000);
+    controlar_leds(false, false, false);
+    sleep_ms(300);
+}
+
+void traco() {
+    controlar_leds(false, false, true);
+    sleep_ms(500);
+    controlar_leds(false, false, false);
+    sleep_ms(500);
+}
+
+void letra_E() 
+{
+    ponto();
+}
+
+void letra_M() 
+{
+    traco();
+    traco();
+}
+
+void letra_B() 
+{
+    traco();
+    ponto(); 
+    ponto(); 
+    ponto();
+}
+
+void letra_A() 
+{
+    ponto();
+    traco();
+}
+
+void letra_R() 
+{
+    ponto();
+    traco();
+    ponto();
+}
+
+void letra_C() 
+{
+    traco();
+    ponto();
+    traco();
+    ponto();
+}
+
+void letra_D() 
+{
+    traco();
+    ponto();
+    ponto();
+}
+
+void letra_O() 
+{
+    traco();
+    traco();
+    traco();
 }
