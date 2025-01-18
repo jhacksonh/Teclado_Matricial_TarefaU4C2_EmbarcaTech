@@ -16,8 +16,8 @@
 #define TEMPO_DEBOUNCE 200    // Delay para debounce em milissegundos
 
 // Configuração do teclado matricial
-const uint pinos_colunas[4] = {4, 3, 2, 1}; // Pinos das colunas
-const uint pinos_linhas[4] = {5, 6, 7, 8};  // Pinos das linhas
+uint pinos_colunas[4] = {4, 3, 2, 1}; // Pinos das colunas
+uint pinos_linhas[4] = {5, 6, 7, 8};  // Pinos das linhas
 
 // Notas da música Imperial March de Star Wars
 int notas_imperial_march[] = {440, 440, 440, 349, 262, 440, 349, 262, 440,  // Primeira parte
