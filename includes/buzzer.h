@@ -6,6 +6,6 @@
 #include "hardware/clocks.h"
 void controlar_buzzer(uint pino_Buzzer, bool ativar);
 void tocar(uint pino_Buzzer, int *notas, int *duracoes, int tamanho);
-// void tocar_nota(uint pino_Buzzer, int frequencia, int duracao);
+void tocar_nota(uint pino_Buzzer, int frequencia, int duracao);
 
 #endif
