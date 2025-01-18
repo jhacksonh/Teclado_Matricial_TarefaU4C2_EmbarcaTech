@@ -38,8 +38,23 @@ int main()
         char tecla = detectar_tecla(pinos_linhas, pinos_colunas);
         switch (tecla)
         {
-        case '0':
-        tocar_musica_mario();
+        case '0': // Toca a música do Mario quando a tecla 0 é pressionada
+          
+            // animação de leds
+            controlar_leds(true, false, false);
+            sleep_ms(500);
+            controlar_leds(false, true, false);
+            sleep_ms(500);
+            controlar_leds(false, false, true);
+            sleep_ms(500);
+            controlar_leds(false, true, false);
+            sleep_ms(500);
+            controlar_leds(true, false, false);
+            sleep_ms(500);
+            controlar_leds(true, true, true);
+
+            tocar_musica_mario();
+            controlar_leds(false, false, false);
             break;    
         case '1':
             int notas_imperial_march[] = {440, 440, 440, 349, 262, 440, 349, 262, 440,  // Primeira parte
@@ -144,9 +159,10 @@ void tocar(uint pino_Buzzer, int *notas, int *duracoes, int tamanho)
     }
 }
 
+// função para tocar a música do Mario
 void tocar_musica_mario() {
 
-    controlar_buzzer(BUZZER_PINO, true);
+    controlar_buzzer(BUZZER_PINO, true); // Ativa o buzzer
 
     // Melodia do tema do Mario
     int melodia[] = {
@@ -160,9 +176,9 @@ void tocar_musica_mario() {
         150, 150, 150, 150, 150, 150, 
     };
 
-    const uint tamanho_melodia = 14;
+    const uint tamanho_melodia = 14; // Tamanho da melodia
 
-    tocar(BUZZER_PINO, melodia, tempo, tamanho_melodia);
+    tocar(BUZZER_PINO, melodia, tempo, tamanho_melodia); // Toca a melodia
 
 }
 
