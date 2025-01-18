@@ -27,6 +27,7 @@ void tocar(uint pino_Buzzer, int *notas, int *duracoes, int tamanho);
 char detectar_tecla(int pinos_linhas_teclado[4], int pinos_colunas_teclado[4]);
 
 void tocar_musica_mario();
+void letra_d_em_morse();
 
 int main()
 {
@@ -38,24 +39,10 @@ int main()
         char tecla = detectar_tecla(pinos_linhas, pinos_colunas);
         switch (tecla)
         {
-        case '0': // Toca a música do Mario quando a tecla 0 é pressionada
-          
-            // animação de leds
-            controlar_leds(true, false, false);
-            sleep_ms(500);
-            controlar_leds(false, true, false);
-            sleep_ms(500);
-            controlar_leds(false, false, true);
-            sleep_ms(500);
-            controlar_leds(false, true, false);
-            sleep_ms(500);
-            controlar_leds(true, false, false);
-            sleep_ms(500);
-            controlar_leds(true, true, true);
-
+        case '0': // Toca a música do Mario e anima leds quando a tecla 0 é pressionada
             tocar_musica_mario();
-            controlar_leds(false, false, false);
-            break;    
+            break; 
+            
         case '1':
             int notas_imperial_march[] = {440, 440, 440, 349, 262, 440, 349, 262, 440,  // Primeira parte
                                           880, 880, 880, 698, 523, 440, 349, 262, 440}; // Segunda parte
@@ -79,6 +66,10 @@ int main()
             tocar(BUZZER_PINO, notas_imperial_march, duracoes_imperial_march, tamanho_imperial_march);
             break;
         case '2':
+            break;
+
+        case 'D': // Toca a letra D em código Morse
+            letra_d_em_morse();
             break;
         default:
             break;
@@ -159,8 +150,22 @@ void tocar(uint pino_Buzzer, int *notas, int *duracoes, int tamanho)
     }
 }
 
-// função para tocar a música do Mario
+// função para tocar a música do Mario e animar os LEDs
 void tocar_musica_mario() {
+
+
+    // animação de leds
+    controlar_leds(true, false, false);
+    sleep_ms(500);
+    controlar_leds(false, true, false);
+    sleep_ms(500);
+    controlar_leds(false, false, true);
+    sleep_ms(500);
+    controlar_leds(false, true, false);
+    sleep_ms(500);
+    controlar_leds(true, false, false);
+    sleep_ms(500);
+    controlar_leds(true, true, true);
 
     controlar_buzzer(BUZZER_PINO, true); // Ativa o buzzer
 
@@ -177,6 +182,31 @@ void tocar_musica_mario() {
     };
 
     const uint tamanho_melodia = 14; // Tamanho da melodia
+
+    tocar(BUZZER_PINO, melodia, tempo, tamanho_melodia); // Toca a melodia
+
+    controlar_leds(false, false, false); // Desliga os LEDs
+
+}
+
+// Função para representar a letra D em código Morse
+void letra_d_em_morse() {
+
+    // A letra D é representada por "-.."
+    // O ponto é representado por 200 ms e o traço por 800 ms
+    // o intervalo entre os sinais é 125 ms
+
+    int melodia[] = {
+        1000, 0, 1000, 0, 1000, 0
+    };
+
+    int tempo[] = {
+        800, 125, 200, 125, 200, 125
+    };
+    
+    const uint tamanho_melodia = 6; // Tamanho da melodia
+
+    controlar_buzzer(BUZZER_PINO, true);
 
     tocar(BUZZER_PINO, melodia, tempo, tamanho_melodia); // Toca a melodia
 
