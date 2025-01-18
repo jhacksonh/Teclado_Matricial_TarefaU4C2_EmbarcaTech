@@ -7,3 +7,4 @@ void controlar_leds(uint pino_vermelho,bool vermelho,uint pino_verde,bool verde,
     gpio_put(pino_verde, verde);
     gpio_put(pino_azul, azul);
 }
+
