@@ -6,6 +6,7 @@
 #include "tecladoMatricial4x4.h"
 #include "leds.h"
 #include "buzzer.h"
+#include "codigoMorse.h"
 
 // Definição dos pinos e constantes
 #define LED_VERMELHO 13
@@ -68,7 +69,7 @@ int main()
             tocar_nota(BUZZER_PINO, 1000, 500);
             break;
         case '8': 
-            codigo_morse();
+            codigoMorse();
             break;
         default:
             break;
