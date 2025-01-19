@@ -19,8 +19,8 @@ D -> um traço, dois pontos
 O -> três traços 
 
 
-um ponto -> led vermelho piscando por 500 ms
-um traço -> led verde piscando por 500 ms 
+um ponto -> led vermelho aceso por 500 ms
+um traço -> led verde aceso por 500 ms 
 tempo entre pontos e traços -> leds apagados por 300 ms 
 tempo entre letras -> leds apagados por 600 ms
 
