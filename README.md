@@ -116,11 +116,11 @@ Essa função é responsável por gerar uma nota musical no buzzer, configurando
 
 Essa função é responsável por tocar uma sequência de notas musicais em um buzzer, utilizando a função `tocar_nota` para gerar cada nota com base na frequência e na duração fornecidas.
 
-#### **4. Função: `detectar_tecla()`**
+### 4. `detectar_tecla()`: Controlar o teclado matricial
 
 Essa função é responsável por detectar qual tecla foi pressionada em um teclado matricial 4x4. Ela percorre as linhas e colunas do teclado, verificando se uma tecla foi acionada, e retorna o caractere correspondente à tecla pressionada.
 
-### 4. `inicializar_perifericos()`: Inicializar Periféricos
+### 5. `inicializar_perifericos()`: Inicializar Periféricos
 
 Essa configura os periféricos utilizados no sistema, como LEDs (vermelho, verde e azul), o buzzer, e as linhas e colunas de um teclado matricial. Além disso, configura a frequência de operação do buzzer e as funcionalidades dos pinos associados.
 
