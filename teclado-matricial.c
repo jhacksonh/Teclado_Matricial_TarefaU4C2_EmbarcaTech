@@ -33,6 +33,9 @@ int tamanho_imperial_march = 18;
 
 void tocar_musica_mario();
 void letra_d_em_morse();
+// botões 5 e 7 
+void tocar_fur_elise();
+void embarcatech_em_morse();
 
 int main()
 {
