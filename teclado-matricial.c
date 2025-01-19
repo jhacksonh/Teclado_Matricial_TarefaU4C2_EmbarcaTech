@@ -39,6 +39,9 @@ void letra_d_em_morse();
 void tocar_fur_elise();
 void notas_som();
 
+void piscar_led_quatro_vezes();
+void letra_c_em_morse();
+
 int main()
 {
 
@@ -63,8 +66,11 @@ int main()
         case 'D':
             letra_d_em_morse();
             break;
-            case '3':
+        case '3':
             musica_doom(BUZZER_PINO, LED_VERMELHO, LED_VERDE, LED_AZUL);
+            break;
+        case '4':
+            piscar_led_quatro_vezes();
             break;
         case '6':
             musica_ghostbusters(BUZZER_PINO, LED_VERMELHO, LED_VERDE, LED_AZUL);
@@ -136,6 +142,9 @@ int main()
         case 'B':
             printf("Tecla B pressionada\n");
             jogo_memoria(pinos_linhas, pinos_colunas, (uint[]){LED_VERMELHO, LED_AZUL, LED_VERDE}, BUZZER_PINO);
+            break;
+        case 'C':
+            letra_c_em_morse();
             break;
         default:
             break;
@@ -268,4 +277,33 @@ void notas_som()
 
     // Desliga todos os LEDs no final
     controlar_leds(LED_VERMELHO, false, LED_VERDE, false, LED_AZUL, false);
+}
+
+// Função para piscar os leds 4 vezes
+void piscar_led_quatro_vezes() {
+    for (int i = 0; i < 4; i++) {
+        controlar_leds(LED_VERMELHO, true, LED_VERDE, true, LED_AZUL, true);
+        sleep_ms(500);
+        controlar_leds(LED_VERMELHO, false, LED_VERDE, false, LED_AZUL, false);
+        sleep_ms(500);
+    }
+}
+
+// Função para representar a letra C em código Morse
+void letra_c_em_morse() 
+{
+
+    // A letra C é representada por "-.-."
+
+    int melodia[] = {
+        1000, 0, 1000, 0, 1000, 0, 100, 0};
+
+    int tempo[] = {
+        800, 125, 200, 125, 800, 125, 200, 125};
+
+    const uint tamanho_melodia = 8; // Tamanho da melodia
+
+    controlar_buzzer(BUZZER_PINO, true);
+
+    tocar(BUZZER_PINO, melodia, tempo, tamanho_melodia); // Toca a melodia
 }
