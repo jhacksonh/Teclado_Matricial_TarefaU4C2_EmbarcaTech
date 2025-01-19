@@ -189,6 +189,7 @@ void letra_d_em_morse() {
 /* Função responsável por controlar o botão 5 do teclado matricial. Ao acionar este botão, será
 reproduzido com o buzzer as 20 primeiras notas da música Fur Elise */  
 
+///  
 void tocar_fur_elise() {
         // 20 primeiras notas da música Fur Elise de Beethoven
     
@@ -205,6 +206,7 @@ void tocar_fur_elise() {
     controlar_buzzer(BUZZER_PINO, false);
 }
 
+/// 
 void embarcatech_em_morse() {
 
     // Embarcatech em código morse é representado por: (E = "." | M = "--" | B = "-..."| A = ".-" | R = ".-." | C = "-.-." | A = ".-" | T = "-" | E = "." | C = "-.-." | H = "....")
@@ -216,13 +218,22 @@ void embarcatech_em_morse() {
 
     int tamanho_morse = 50;
 
-    for(int i = 0; i < tamanho_morse; i++) {
-        controlar_buzzer(BUZZER_PINO, true);
-        sleep_ms(padrao_morse[i]);
-        controlar_buzzer(BUZZER_PINO, false);
-        sleep_ms(150); // intervalo entre os sinais
-    }
 
+    for (int i = 0; i < tamanho_morse; i++) {
+        // Acende o LED e ativa o buzzer
+        controlar_leds(LED_VERMELHO, true, LED_VERDE, false, LED_AZUL, false);
+        controlar_buzzer(BUZZER_PINO, true);
+
+        // Mantém o sinal por tempo especificado
+        sleep_ms(padrao_morse[i]);
+
+        // Desliga o LED e o buzzer
+        controlar_leds(LED_VERMELHO, false, LED_VERDE, false, LED_AZUL, false);
+        controlar_buzzer(BUZZER_PINO, false);
+
+        // Intervalo entre cada sinal Morse
+        sleep_ms(150);
+    }
 
 }
 
