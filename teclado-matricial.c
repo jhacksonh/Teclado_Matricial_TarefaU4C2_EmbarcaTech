@@ -107,7 +107,7 @@ int main()
             break;
 
         case '5':
-            tocar_Fur_Elise();
+            tocar_fur_elise();
             break;
         case '7':
             embarcatech_em_morse();
@@ -189,7 +189,7 @@ void letra_d_em_morse() {
 /* Função responsável por controlar o botão 5 do teclado matricial. Ao acionar este botão, será
 reproduzido com o buzzer as 20 primeiras notas da música Fur Elise */  
 
-void tocar_Fur_Elise() {
+void tocar_fur_elise() {
         // 20 primeiras notas da música Fur Elise de Beethoven
     
     int notas_fur_elise[] = {659, 622, 659, 622, 659, 494, 587, 523, 440, 494, 523, 587, 659, 494, 523, 587, 659, 622, 659, 622};
@@ -202,15 +202,27 @@ void tocar_Fur_Elise() {
 
     controlar_buzzer(BUZZER_PINO, true);
     tocar(BUZZER_PINO, notas_fur_elise, duracao_notas_fur, tamanho_fur_elise);
-    controlar(BUZZER_PINO, false);
+    controlar_buzzer(BUZZER_PINO, false);
 }
 
 void embarcatech_em_morse() {
 
     // Embarcatech em código morse é representado por: (E = "." | M = "--" | B = "-..."| A = ".-" | R = ".-." | C = "-.-." | A = ".-" | T = "-" | E = "." | C = "-.-." | H = "....")
     // ponto será 200 ms e traço será 600 ms, o intervalo será de 150 ms
+    int padrao_morse[] = {200, 600, 200, 200, 600, 200, 200, 200, 600, 200, 
+    600, 200, 200, 200, 600, 200, 200, 200, 200, 600, 600, 200, 200, 200, 
+    600, 200, 200, 200, 600, 200, 600, 200, 200, 200, 200, 200, 600, 200, 
+    600, 200, 600, 200, 200, 200, 200, 200, 600, 200, 600, 200};
 
-    
+    int tamanho_morse = 50;
+
+    for(int i = 0; i < tamanho_morse; i++) {
+        controlar_buzzer(BUZZER_PINO, true);
+        sleep_ms(padrao_morse[i]);
+        controlar_buzzer(BUZZER_PINO, false);
+        sleep_ms(150); // intervalo entre os sinais
+    }
+
 
 }
 
