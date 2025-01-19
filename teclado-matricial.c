@@ -8,6 +8,7 @@
 #include "buzzer.h"
 #include "pico/bootrom.h"
 #include "botoes-1-2.h"
+#include "botoes-3-6.h"
 #include "botoes8-9.h"
 #include "botoes_a_b.h"
 
@@ -61,6 +62,12 @@ int main()
             break;
         case 'D':
             letra_d_em_morse();
+            break;
+            case '3':
+            musica_doom(BUZZER_PINO, LED_VERMELHO, LED_VERDE, LED_AZUL);
+            break;
+        case '6':
+            musica_ghostbusters(BUZZER_PINO, LED_VERMELHO, LED_VERDE, LED_AZUL);
             break;
         case '#':
             printf("Tecla # pressionada\n");
