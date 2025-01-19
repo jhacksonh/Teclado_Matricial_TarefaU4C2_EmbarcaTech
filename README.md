@@ -64,8 +64,6 @@ Este projeto requer os seguintes recursos e ferramentas:
 
 ## Estrutura do Projeto 
 
-# Estrutura do Projeto
-
 ```plaintext
 ├── includes                
 │   ├── botoes_a_b.h        
