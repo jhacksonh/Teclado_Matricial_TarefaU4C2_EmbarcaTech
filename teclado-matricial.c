@@ -32,6 +32,7 @@ int tamanho_imperial_march = 18;
 
 void tocar_musica_mario();
 void letra_d_em_morse();
+void tocar_musica_jingle_bells();
 
 int main()
 {
@@ -121,7 +122,7 @@ int main()
             codigoMorse();
             break;
         case '9':
-             
+            tocar_musica_jingle_bells();
             break;
         default:
             break;
@@ -191,4 +192,15 @@ void letra_d_em_morse() {
 
     tocar(BUZZER_PINO, melodia, tempo, tamanho_melodia); // Toca a melodia
 
+}
+
+
+void tocar_musica_jingle_bells() {
+    int frequencias[] = {330, 330, 330, 330, 330, 330, 330, 392, 261, 294, 330, 349, 349, 349, 349, 349, 330, 330, 330, 330, 294, 294, 330, 294, 392};
+    int duracoes[] = {200, 200, 400, 200, 200, 400, 200, 200, 200, 200, 600, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 400, 400};
+
+    
+    controlar_buzzer(BUZZER_PINO, true);
+
+    tocar(BUZZER_PINO, frequencias, duracoes, sizeof(frequencias) / sizeof(int));
 }
