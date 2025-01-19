@@ -109,6 +109,9 @@ int main()
         case '5':
             tocar_Fur_Elise();
             break;
+        case '7':
+            embarcatech_em_morse();
+            break;
         case '8': 
             codigoMorse();
             break;
@@ -202,6 +205,13 @@ void tocar_Fur_Elise() {
     controlar(BUZZER_PINO, false);
 }
 
-void 
+void embarcatech_em_morse() {
+
+    // Embarcatech em código morse é representado por: (E = "." | M = "--" | B = "-..."| A = ".-" | R = ".-." | C = "-.-." | A = ".-" | T = "-" | E = "." | C = "-.-." | H = "....")
+    // ponto será 200 ms e traço será 600 ms, o intervalo será de 150 ms
+
+    
+
+}
 
 
