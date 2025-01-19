@@ -13,7 +13,7 @@ Este projeto utiliza o simulador de eletrônica [Wokwi](https://wokwi.com) para 
 1. **Teclado matricial 4x4**.
 2. **03 LEDs RGB**.
 3. **Buzzer**.
-4. **Microcontrolador Raspberry Pi Pico W**.
+4. **Placa Raspberry Pi Pico W**.
 
 ## Dependências do Projeto
 
@@ -28,7 +28,7 @@ Este projeto requer os seguintes recursos e ferramentas:
    - O [Wokwi](https://wokwi.com) deve ser integrado ao ambiente de desenvolvimento **VS Code** para realizar a simulação e execução dos códigos.
 
 3. **Kit de Desenvolvimento Pico SDK**:
-   - Configurado para compilar e carregar os códigos em C para a simulação do microcontrolador Raspberry Pi Pico W.
+   - Configurado para compilar e carregar os códigos em C para a simulação da placa Raspberry Pi Pico W.
 
 ---
 
@@ -95,3 +95,32 @@ Este projeto requer os seguintes recursos e ferramentas:
   - **Tecla `9`**: Toca a música "Jingle Bells".
 
 ---
+
+### 2. `controlar_leds()`: Controlar LEDs
+
+Essa função tem como objetivo controlar os LEDs RGB (vermelho, verde e azul) conectados aos pinos específicos do microcontrolador. Ela permite acionar ou desligar cada cor de LED de forma independente, utilizando os pinos de controle definidos no código.
+
+### 3. Funções para Controle do Buzzer
+
+Este conjunto de funções permite controlar um buzzer conectado ao microcontrolador para tocar notas musicais utilizando PWM (Pulse Width Modulation). As funções permitem acionar o buzzer, controlar a frequência das notas e a duração das mesmas.
+
+#### **1. Função: `controlar_buzzer()`**
+
+Esta função ativa ou desativa o buzzer utilizando PWM.
+
+#### **2. Função: `tocar_nota()`**
+
+Essa função é responsável por gerar uma nota musical no buzzer, configurando sua frequência e duração, utilizando PWM (Pulse Width Modulation).
+
+#### **3. Função: `tocar()`**
+
+Essa função é responsável por tocar uma sequência de notas musicais em um buzzer, utilizando a função `tocar_nota` para gerar cada nota com base na frequência e na duração fornecidas.
+
+#### **4. Função: `detectar_tecla()`**
+
+Essa função é responsável por detectar qual tecla foi pressionada em um teclado matricial 4x4. Ela percorre as linhas e colunas do teclado, verificando se uma tecla foi acionada, e retorna o caractere correspondente à tecla pressionada.
+
+### 4. `inicializar_perifericos()`: Inicializar Periféricos
+
+Essa configura os periféricos utilizados no sistema, como LEDs (vermelho, verde e azul), o buzzer, e as linhas e colunas de um teclado matricial. Além disso, configura a frequência de operação do buzzer e as funcionalidades dos pinos associados.
+
