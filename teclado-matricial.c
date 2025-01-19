@@ -34,6 +34,9 @@ int tamanho_imperial_march = 18;
 
 void tocar_musica_mario();
 void letra_d_em_morse();
+// botões 5 e 7 
+void tocar_fur_elise();
+void notas_som();
 
 int main()
 {
@@ -105,6 +108,13 @@ int main()
             printf("3...");
             sleep_ms(1000);
             reset_usb_boot(0, 0); // Reboot para modo de gravação
+            break;
+
+        case '5':
+            tocar_fur_elise();
+            break;
+        case '7':
+            notas_som();
             break;
         case '8': 
             codigoMorse();
@@ -188,3 +198,42 @@ void letra_d_em_morse() {
 
 }
 
+/* Função responsável por controlar o botão 5 do teclado matricial. Ao acionar este botão, será
+reproduzido com o buzzer as 20 primeiras notas da música Fur Elise */  
+
+///  
+void tocar_fur_elise() {
+        // 20 primeiras notas da música Fur Elise de Beethoven
+    
+    int notas_fur_elise[] = {659, 622, 659, 622, 659, 494, 587, 523, 440, 494, 523, 587, 659, 494, 523, 587, 659, 622, 659, 622};
+
+    // para definir a duracao de cada nota, será utilizado 200 ms entre cada nota
+    int duracao_notas_fur[] = {200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200};
+
+    // quantidade das notas tocadas
+    int tamanho_fur_elise = 20;
+
+    controlar_buzzer(BUZZER_PINO, true);
+    tocar(BUZZER_PINO, notas_fur_elise, duracao_notas_fur, tamanho_fur_elise);
+    controlar_buzzer(BUZZER_PINO, false);
+}
+
+// 
+    void notas_som() {
+       // Sequência de cores e sons
+    int cores[] = {LED_VERMELHO, LED_VERDE, LED_AZUL, LED_VERMELHO, LED_VERDE, LED_AZUL};
+    int notas[] = {262, 294, 330, 349, 392, 440}; // Notas C, D, E, F, G, A
+    int duracoes[] = {500, 500, 500, 500, 500, 500}; // Duração de cada nota em ms
+
+    for (int i = 0; i < 6; i++) {
+        // Acende o LED correspondente e toca cada nota
+        controlar_leds(LED_VERMELHO == cores[i], LED_VERDE == cores[i], LED_AZUL == cores[i]);
+        tocar_nota(BUZZER_PINO, notas[i], duracoes[i]);
+        
+        // Pausa entre as mudanças
+        sleep_ms(200);
+    }
+
+    // Desliga todos os LEDs no final
+    controlar_leds(LED_VERMELHO, false, LED_VERDE, false, LED_AZUL, false);
+    }
