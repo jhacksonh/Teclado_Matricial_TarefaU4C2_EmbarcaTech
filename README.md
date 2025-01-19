@@ -2,6 +2,9 @@
 
 Este projeto utiliza o simulador de eletrônica [Wokwi](https://wokwi.com) para implementar o controle de componentes eletrônicos por meio de um teclado matricial 4x4, com o microcontrolador RP2040 presente na placa Raspberry Pi Pico W.
 
+## Link do vídeo 
+- [Projeto Controle com Teclado Matricial 4x4](colocar-link-aqui)
+
 ## Funcionalidades
 
 - Controle de **03 LEDs RGB**.
