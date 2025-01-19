@@ -97,7 +97,7 @@ add_executable(teclado-matricial
     src/tecladoMatricial4x4.c
     src/leds.c
     src/buzzer.c
-    src/codigoMorse.c
+    src/botoes8-9.c
     )
 
 pico_set_program_name(teclado-matricial "teclado-matricial")

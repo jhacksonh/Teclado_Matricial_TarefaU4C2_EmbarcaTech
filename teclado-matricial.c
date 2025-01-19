@@ -7,7 +7,7 @@
 #include "leds.h"
 #include "buzzer.h"
 #include "pico/bootrom.h"
-#include "codigoMorse.h"
+#include "botoes8-9.h"
 
 // Definição dos pinos e constantes
 #define LED_VERMELHO 13
@@ -120,6 +120,9 @@ int main()
         case '8': 
             codigoMorse();
             break;
+        case '9':
+            tocar_musica_jingle_bells();
+            break;
         default:
             break;
         }
@@ -189,3 +192,4 @@ void letra_d_em_morse() {
     tocar(BUZZER_PINO, melodia, tempo, tamanho_melodia); // Toca a melodia
 
 }
+
