@@ -35,10 +35,7 @@ void tocar(uint pino_Buzzer, int *notas, int *duracoes, int tamanho)
     {
         int frequencia = notas[i];
         int duracao = duracoes[i];
-
         // Chama a função tocar_nota para tocar a nota específica
         tocar_nota(pino_Buzzer, frequencia, duracao);
-
-        sleep_ms(50); // Pequena pausa entre notas
     }
 }
