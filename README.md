@@ -94,6 +94,8 @@ Este projeto requer os seguintes recursos e ferramentas:
     1. Liga LEDs em sequência.
     2. Emite som no buzzer por 2 segundos.
     3. Reinicia o dispositivo em modo de gravação via USB.
+  - **Tecla `5`**: Toca as notas da música Fur Elise de Beethoven.
+  - **Tecla `7`**: Toca uma sequência de notas e aciona os LED's em simultêneo.     
   - **Tecla `8`**: Executa uma rotina para representar mensagens em código Morse com os LEDs.
   - **Tecla `9`**: Toca a música "Jingle Bells".
 
