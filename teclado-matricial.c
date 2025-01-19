@@ -7,6 +7,7 @@
 #include "leds.h"
 #include "buzzer.h"
 #include "pico/bootrom.h"
+#include "botoes-1-2.h"
 #include "botoes8-9.h"
 
 // Definição dos pinos e constantes
@@ -49,23 +50,10 @@ int main()
             break; 
             
         case '1':
-            for (int i = 0; i < 4; i++)
-            {
-                if (i == 0)
-                    controlar_leds(LED_VERMELHO, true, LED_VERDE, false, LED_AZUL, false);
-                else if (i == 1)
-                    controlar_leds(LED_VERMELHO, false, LED_VERDE, true, LED_AZUL, false);
-                else if (i == 2)
-                    controlar_leds(LED_VERMELHO, false, LED_VERDE, false, LED_AZUL, true);
-                else
-                    controlar_leds(LED_VERMELHO, true, LED_VERDE, true, LED_AZUL, true);
-                sleep_ms(500);
-            }
-            controlar_buzzer(BUZZER_PINO, true);
-            // tocar(BUZZER_PINO, notas_imperial_march, duracoes_imperial_march, tamanho_imperial_march);
-            tocar_nota(BUZZER_PINO, 500, 300);
+            Notas_Musicais_Tecla_1(BUZZER_PINO, LED_VERMELHO, LED_VERDE, LED_AZUL);
             break;
         case '2':
+            Sequencia_Aleatoria_Tecla_2(BUZZER_PINO, LED_VERMELHO, LED_VERDE, LED_AZUL);
             break;
         case 'D':
             letra_d_em_morse();
@@ -133,8 +121,6 @@ int main()
 }
 
 void tocar_musica_mario() {
-
-
     // animação de leds
     controlar_leds(LED_VERMELHO, true, LED_VERDE, false, LED_AZUL, false);
     sleep_ms(500);
