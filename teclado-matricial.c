@@ -35,7 +35,7 @@ void tocar_musica_mario();
 void letra_d_em_morse();
 // botões 5 e 7 
 void tocar_fur_elise();
-void embarcatech_em_morse();
+void notas_som();
 
 int main()
 {
@@ -113,7 +113,7 @@ int main()
             tocar_fur_elise();
             break;
         case '7':
-            embarcatech_em_morse();
+            notas_som();
             break;
         case '8': 
             codigoMorse();
@@ -209,35 +209,19 @@ void tocar_fur_elise() {
     controlar_buzzer(BUZZER_PINO, false);
 }
 
-/// 
-void embarcatech_em_morse() {
+// 
+    void notas_som() {
+      // Sequencia de cores e notas
+        int cores[] = {LED_VERMELHO, LED_VERDE, LED_AZUL};
+        int notas[] = {262, 330, 392}; // Notas correspondentes a C, E, G de um acorde básico
+        int duracoes[] = {500, 500, 500}; // Duração de cada nota ms
 
-    // Embarcatech em código morse é representado por: (E = "." | M = "--" | B = "-..."| A = ".-" | R = ".-." | C = "-.-." | A = ".-" | T = "-" | E = "." | C = "-.-." | H = "....")
-    // ponto será 200 ms e traço será 600 ms, o intervalo será de 150 ms
-    int padrao_morse[] = {200, 600, 200, 200, 600, 200, 200, 200, 600, 200, 
-    600, 200, 200, 200, 600, 200, 200, 200, 200, 600, 600, 200, 200, 200, 
-    600, 200, 200, 200, 600, 200, 600, 200, 200, 200, 200, 200, 600, 200, 
-    600, 200, 600, 200, 200, 200, 200, 200, 600, 200, 600, 200};
-
-    int tamanho_morse = 50;
-
-
-    for (int i = 0; i < tamanho_morse; i++) {
-        // Acende o LED e ativa o buzzer
-        controlar_leds(LED_VERMELHO, true, LED_VERDE, false, LED_AZUL, false);
-        controlar_buzzer(BUZZER_PINO, true);
-
-        // Mantém o sinal por tempo especificado
-        sleep_ms(padrao_morse[i]);
-
-        // Desliga o LED e o buzzer
-        controlar_leds(LED_VERMELHO, false, LED_VERDE, false, LED_AZUL, false);
-        controlar_buzzer(BUZZER_PINO, false);
-
-        // Intervalo entre cada sinal Morse
-        sleep_ms(150);
+        for (int i = 0; i < 3; i++) {
+            // Acende o LED correspondente e toca a nota
+            controlar_leds(LED_VERMELHO == cores[i], LED_VERDE == cores[i], LED_AZUL == cores[i]);
+            tocar_nota(BUZZER_PINO, notas[i], duracoes[i]);
+        
+            // Pausa entre as mudanças dos LEDs
+           sleep_ms(200);
     }
-
 }
-
-
