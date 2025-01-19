@@ -211,17 +211,20 @@ void tocar_fur_elise() {
 
 // 
     void notas_som() {
-      // Sequencia de cores e notas
-        int cores[] = {LED_VERMELHO, LED_VERDE, LED_AZUL};
-        int notas[] = {262, 330, 392}; // Notas correspondentes a C, E, G de um acorde básico
-        int duracoes[] = {500, 500, 500}; // Duração de cada nota ms
+       // Sequência de cores e sons
+    int cores[] = {LED_VERMELHO, LED_VERDE, LED_AZUL, LED_VERMELHO, LED_VERDE, LED_AZUL};
+    int notas[] = {262, 294, 330, 349, 392, 440}; // Notas C, D, E, F, G, A
+    int duracoes[] = {500, 500, 500, 500, 500, 500}; // Duração de cada nota em ms
 
-        for (int i = 0; i < 3; i++) {
-            // Acende o LED correspondente e toca a nota
-            controlar_leds(LED_VERMELHO == cores[i], LED_VERDE == cores[i], LED_AZUL == cores[i]);
-            tocar_nota(BUZZER_PINO, notas[i], duracoes[i]);
+    for (int i = 0; i < 6; i++) {
+        // Acende o LED correspondente e toca cada nota
+        controlar_leds(LED_VERMELHO == cores[i], LED_VERDE == cores[i], LED_AZUL == cores[i]);
+        tocar_nota(BUZZER_PINO, notas[i], duracoes[i]);
         
-            // Pausa entre as mudanças dos LEDs
-           sleep_ms(200);
+        // Pausa entre as mudanças
+        sleep_ms(200);
     }
-}
+
+    // Desliga todos os LEDs no final
+    controlar_leds(LED_VERMELHO, false, LED_VERDE, false, LED_AZUL, false);
+    }
