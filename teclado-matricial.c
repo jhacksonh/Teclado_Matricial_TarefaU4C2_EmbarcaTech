@@ -16,7 +16,7 @@
 #define LED_AZUL 12
 #define LED_VERDE 11
 #define BUZZER_PINO 21
-#define TEMPO_DEBOUNCE 200    // Delay para debounce em milissegundos
+#define TEMPO_DEBOUNCE 200 // Delay para debounce em milissegundos
 
 // Configuração do teclado matricial
 uint pinos_colunas[4] = {4, 3, 2, 1}; // Pinos das colunas
@@ -34,7 +34,7 @@ int tamanho_imperial_march = 18;
 
 void tocar_musica_mario();
 void letra_d_em_morse();
-// botões 5 e 7 
+// botões 5 e 7
 void tocar_fur_elise();
 void notas_som();
 
@@ -51,8 +51,8 @@ int main()
         {
         case '0': // Toca a música do Mario e anima leds quando a tecla 0 é pressionada
             tocar_musica_mario();
-            break; 
-            
+            break;
+
         case '1':
             Notas_Musicais_Tecla_1(BUZZER_PINO, LED_VERMELHO, LED_VERDE, LED_AZUL);
             break;
@@ -116,7 +116,7 @@ int main()
         case '7':
             notas_som();
             break;
-        case '8': 
+        case '8':
             codigoMorse();
             break;
         case '9':
@@ -139,7 +139,8 @@ int main()
     return 0;
 }
 
-void tocar_musica_mario() {
+void tocar_musica_mario()
+{
     // animação de leds
     controlar_leds(LED_VERMELHO, true, LED_VERDE, false, LED_AZUL, false);
     sleep_ms(500);
@@ -157,14 +158,38 @@ void tocar_musica_mario() {
 
     // Melodia do tema do Mario
     int melodia[] = {
-        2637, 2637, 0, 2637, 0, 2093, 2637, 0,
-        3136, 0, 0, 0, 1568, 0,
+        2637,
+        2637,
+        0,
+        2637,
+        0,
+        2093,
+        2637,
+        0,
+        3136,
+        0,
+        0,
+        0,
+        1568,
+        0,
     };
 
     // Duração das notas (tempo reduzido para acelerar a melodia)
     int tempo[] = {
-        150, 150, 150, 150, 150, 150, 150, 150,
-        150, 150, 150, 150, 150, 150, 
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
     };
 
     const uint tamanho_melodia = 14; // Tamanho da melodia
@@ -172,39 +197,37 @@ void tocar_musica_mario() {
     tocar(BUZZER_PINO, melodia, tempo, tamanho_melodia); // Toca a melodia
 
     controlar_leds(LED_VERMELHO, false, LED_VERDE, false, LED_AZUL, false); // Desliga os LEDs
-
 }
 
 // Função para representar a letra D em código Morse
-void letra_d_em_morse() {
+void letra_d_em_morse()
+{
 
     // A letra D é representada por "-.."
     // O ponto é representado por 200 ms e o traço por 800 ms
     // o intervalo entre os sinais é 125 ms
 
     int melodia[] = {
-        1000, 0, 1000, 0, 1000, 0
-    };
+        1000, 0, 1000, 0, 1000, 0};
 
     int tempo[] = {
-        800, 125, 200, 125, 200, 125
-    };
-    
+        800, 125, 200, 125, 200, 125};
+
     const uint tamanho_melodia = 6; // Tamanho da melodia
 
     controlar_buzzer(BUZZER_PINO, true);
 
     tocar(BUZZER_PINO, melodia, tempo, tamanho_melodia); // Toca a melodia
-
 }
 
 /* Função responsável por controlar o botão 5 do teclado matricial. Ao acionar este botão, será
-reproduzido com o buzzer as 20 primeiras notas da música Fur Elise */  
+reproduzido com o buzzer as 20 primeiras notas da música Fur Elise */
 
-///  
-void tocar_fur_elise() {
-        // 20 primeiras notas da música Fur Elise de Beethoven
-    
+///
+void tocar_fur_elise()
+{
+    // 20 primeiras notas da música Fur Elise de Beethoven
+
     int notas_fur_elise[] = {659, 622, 659, 622, 659, 494, 587, 523, 440, 494, 523, 587, 659, 494, 523, 587, 659, 622, 659, 622};
 
     // para definir a duracao de cada nota, será utilizado 200 ms entre cada nota
@@ -218,22 +241,24 @@ void tocar_fur_elise() {
     controlar_buzzer(BUZZER_PINO, false);
 }
 
-// 
-    void notas_som() {
-       // Sequência de cores e sons
+//
+void notas_som()
+{
+    // Sequência de cores e sons
     int cores[] = {LED_VERMELHO, LED_VERDE, LED_AZUL, LED_VERMELHO, LED_VERDE, LED_AZUL};
-    int notas[] = {262, 294, 330, 349, 392, 440}; // Notas C, D, E, F, G, A
+    int notas[] = {262, 294, 330, 349, 392, 440};    // Notas C, D, E, F, G, A
     int duracoes[] = {500, 500, 500, 500, 500, 500}; // Duração de cada nota em ms
 
-    for (int i = 0; i < 6; i++) {
+    for (int i = 0; i < 6; i++)
+    {
         // Acende o LED correspondente e toca cada nota
-        controlar_leds(LED_VERMELHO == cores[i], LED_VERDE == cores[i], LED_AZUL == cores[i]);
+        controlar_leds(LED_VERMELHO,true, LED_VERDE,false, LED_AZUL,false);
         tocar_nota(BUZZER_PINO, notas[i], duracoes[i]);
-        
+
         // Pausa entre as mudanças
         sleep_ms(200);
     }
 
     // Desliga todos os LEDs no final
     controlar_leds(LED_VERMELHO, false, LED_VERDE, false, LED_AZUL, false);
-    }
+}
