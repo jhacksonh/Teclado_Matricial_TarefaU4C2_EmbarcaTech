@@ -196,16 +196,37 @@ reproduzido com o buzzer as 20 primeiras notas da música Fur Elise */
 void tocar_fur_elise() {
         // 20 primeiras notas da música Fur Elise de Beethoven
     
-    int notas_fur_elise[] = {659, 622, 659, 622, 659, 494, 587, 523, 440, 494, 523, 587, 659, 494, 523, 587, 659, 622, 659, 622};
+    int notas_fur_elise[] = {659, 622, 659, 622, 659, 494, 587, 523, 440, 494, 
+        523, 587, 659, 494, 523, 587, 659, 622, 659, 622, 
+        659, 494, 587, 523, 440, 494, 523, 587, 659, 494, 
+        523, 587, 659, 622, 659, 622, 659, 494, 587, 523, 
+        440, 494, 523, 587, 659, 494, 523, 587, 659, 622,
+        659, 622, 659, 494, 587, 523, 440, 494, 523, 587,
+        659, 494, 523, 587, 659, 622, 659, 622, 659, 494,
+        587, 523, 440, 494, 523, 587, 659, 494, 523, 587,
+        659, 622, 659, 622, 659, 494, 587, 523, 440, 494};
 
-    // para definir a duracao de cada nota, será utilizado 200 ms entre cada nota
-    int duracao_notas_fur[] = {200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200};
+    // para definir a duracao de cada nota
+    int duracoes_fur_elise[] = {
+        300, 300, 300, 300, 300, 200, 200, 200, 400, 200, // Introdução (colcheias e semicolcheias)
+        200, 200, 300, 200, 200, 200, 300, 300, 300, 300, 
+        300, 200, 200, 200, 400, 200, 200, 200, 300, 200, 
+        200, 200, 300, 200, 200, 200, 300, 200, 400, 400, 
+        300, 200, 200, 200, 400, 200, 300, 300, 300, 200, 
+        200, 200, 300, 200, 300, 300, 300, 200, 200, 200, 
+        400, 200, 200, 200, 300, 300, 200, 200, 400, 200, 
+        200, 200, 300, 300, 300, 300, 300, 200, 200, 200
+    };
 
-    // quantidade das notas tocadas
-    int tamanho_fur_elise = 20;
+     int tamanho_fur_elise = sizeof(notas_fur_elise) / sizeof(notas_fur_elise[0]);
 
     controlar_buzzer(BUZZER_PINO, true);
-    tocar(BUZZER_PINO, notas_fur_elise, duracao_notas_fur, tamanho_fur_elise);
+
+    // Tocar todas as notas com a duração correta
+    for (int i = 0; i < tamanho_fur_elise; i++) {
+        tocar_nota(BUZZER_PINO, notas_fur_elise[i], duracoes_fur_elise[i]);
+    }
+
     controlar_buzzer(BUZZER_PINO, false);
 }
 
