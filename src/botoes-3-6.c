@@ -30,6 +30,12 @@ void musica_doom(uint pino_buzzer) {
         200, 200, 200, 200, 200, 200, 200, 200,
         200, 200, 200, 200, 200, 200, 200, 200,
         200, 200, 200, 200, 200, 200, 200, 200
+    };
+
+    
+    for (int i = 0; i < sizeof(frequencias) / sizeof(frequencias[0]); i++) {
+        tocar_nota(pino_buzzer, frequencias[i], duracoes[i]);
+        leds_ritmo(1, duracoes[i]); 
     }
 }
 
@@ -49,6 +55,12 @@ void musica_ghostbusters(uint pino_buzzer) {
         300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 
         300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 
         300, 300, 300, 300, 300, 300, 300, 300, 300, 300 
+    };
+
+    
+    for (int i = 0; i < sizeof(frequencias) / sizeof(frequencias[0]); i++) {
+        tocar_nota(pino_buzzer, frequencias[i], duracoes[i]);
+        leds_ritmo(1, duracoes[i]); 
     }
 }
 
