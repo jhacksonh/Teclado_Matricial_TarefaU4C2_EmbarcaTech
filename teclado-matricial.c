@@ -107,7 +107,7 @@ int main()
             break;
 
         case '5':
-            tocar_fur_elise();
+            tocar_Fur_Elise();
             break;
         case '8': 
             codigoMorse();
@@ -186,14 +186,22 @@ void letra_d_em_morse() {
 /* Função responsável por controlar o botão 5 do teclado matricial. Ao acionar este botão, será
 reproduzido com o buzzer as 20 primeiras notas da música Fur Elise */  
 
-void tocar_FurElise() {
+void tocar_Fur_Elise() {
         // 20 primeiras notas da música Fur Elise de Beethoven
     
-    int notas_fur_elise[] = 
+    int notas_fur_elise[] = {659, 622, 659, 622, 659, 494, 587, 523, 440, 494, 523, 587, 659, 494, 523, 587, 659, 622, 659, 622};
 
+    // para definir a duracao de cada nota, será utilizado 200 ms entre cada nota
+    int duracao_notas_fur[] = {200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200};
 
+    // quantidade das notas tocadas
+    int tamanho_fur_elise = 20;
 
-
+    controlar_buzzer(BUZZER_PINO, true);
+    tocar(BUZZER_PINO, notas_fur_elise, duracao_notas_fur, tamanho_fur_elise);
+    controlar(BUZZER_PINO, false);
 }
+
+void 
 
 
