@@ -9,6 +9,7 @@
 #include "pico/bootrom.h"
 #include "botoes-1-2.h"
 #include "botoes8-9.h"
+#include "botoes_a_b.h"
 
 // Definição dos pinos e constantes
 #define LED_VERMELHO 13
@@ -110,6 +111,14 @@ int main()
             break;
         case '9':
             tocar_musica_jingle_bells();
+            break;
+        case 'A':
+            printf("Tecla A pressionada\n");
+            jogo_memoria(pinos_linhas, pinos_colunas, (uint[]){LED_VERMELHO, LED_AZUL, LED_VERDE}, BUZZER_PINO);
+            break;
+        case 'B':
+            printf("Tecla B pressionada\n");
+            jogo_memoria(pinos_linhas, pinos_colunas, (uint[]){LED_VERMELHO, LED_AZUL, LED_VERDE}, BUZZER_PINO);
             break;
         default:
             break;

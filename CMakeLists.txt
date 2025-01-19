@@ -90,15 +90,10 @@ project(teclado-matricial C CXX ASM)
 pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
-
+file(GLOB SRC_FILES "src/*.c")
 add_executable(teclado-matricial
     teclado-matricial.c
-    src/configGpios.c
-    src/tecladoMatricial4x4.c
-    src/leds.c
-    src/buzzer.c
-    src/botoes-1-2.c
-    src/botoes8-9.c
+    ${SRC_FILES}
     )
 
 pico_set_program_name(teclado-matricial "teclado-matricial")
