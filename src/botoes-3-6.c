@@ -27,3 +27,12 @@ void musica_doom(uint pino_buzzer) {
     }
 }
 
+void musica_ghostbusters(uint pino_buzzer) {
+    int notas_ghostbusters[] = { 330, 330, 330, 330, 392, 392 };
+    for (int i = 0; i < sizeof(notas_ghostbusters) / sizeof(int); i++) {
+        tocar_nota(pino_buzzer, notas_ghostbusters[i], 300);  
+        leds_ritmo(1);  
+    }
+}
+
+
