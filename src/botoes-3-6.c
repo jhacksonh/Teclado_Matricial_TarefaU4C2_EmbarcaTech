@@ -18,3 +18,12 @@ void leds_ritmo(int ritmo) {
     }
     // Adicionar outros padrões de LED conforme necessário
 }
+
+void musica_doom(uint pino_buzzer) {
+    int notas_doom[] = { 523, 523, 523, 523, 523, 523, 523, 523, 523, 523 }; 
+    for (int i = 0; i < sizeof(notas_doom) / sizeof(int); i++) {
+        tocar_nota(pino_buzzer, notas_doom[i], 500);
+        leds_ritmo(1);  
+    }
+}
+
