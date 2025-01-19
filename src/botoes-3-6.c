@@ -1,4 +1,4 @@
-#include "musicas.h"
+#include "BOTOES_3_6_H"
 #include "pico/stdlib.h"
 #include "buzzer.h"
 #include "leds.h"
@@ -35,7 +35,7 @@ void musica_doom(uint pino_buzzer) {
     
     for (int i = 0; i < sizeof(frequencias) / sizeof(frequencias[0]); i++) {
         tocar_nota(pino_buzzer, frequencias[i], duracoes[i]);
-        leds_ritmo(1, duracoes[i]); 
+        leds_ritmo(1);
     }
 }
 
@@ -60,7 +60,7 @@ void musica_ghostbusters(uint pino_buzzer) {
     
     for (int i = 0; i < sizeof(frequencias) / sizeof(frequencias[0]); i++) {
         tocar_nota(pino_buzzer, frequencias[i], duracoes[i]);
-        leds_ritmo(1, duracoes[i]); 
+        leds_ritmo(1);
     }
 }
 
