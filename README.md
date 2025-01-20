@@ -122,13 +122,17 @@ Este projeto requer os seguintes recursos e ferramentas:
 - Ações baseadas nas teclas pressionadas:
   - **Tecla `0`**: Toca a música do Mario com animação de LEDs.
   - **Tecla `1`**: Toca as notas em duas ordens inversas e executa uma sequência aleatória nos LEDs.
-  - **Tecla `2`**: Toca uma sequência aleatória de notas e executa uma sequência aleatória nos LEDs. 
+  - **Tecla `2`**: Toca uma sequência aleatória de notas e executa uma sequência aleatória nos LEDs.
+  - **Tecla `3`**: 
+  - **Tecla `4`**: Pisca o Led vermelho, azul e verde quatro vezes. 
   - **Tecla `5`**: Toca as notas da música Fur Elise de Beethoven.
+  - **Tecla `6`**:
   - **Tecla `7`**: Toca uma sequência de notas e aciona os LED's em simultêneo.     
   - **Tecla `8`**: Executa uma rotina para representar mensagens em código Morse com os LEDs.
   - **Tecla `9`**: Toca a música "Jingle Bells".
    - **Tecla `A`**: Contém um [jogo de memória](https://github.com/jhacksonh/Teclado_Matricial_TarefaU4C2_EmbarcaTech/blob/main/TECLAS_A_B.md).
-  - **Tecla `B`**: Contém um [jogo de memória](https://github.com/jhacksonh/Teclado_Matricial_TarefaU4C2_EmbarcaTech/blob/main/TECLAS_A_B.md). 
+  - **Tecla `B`**: Contém um [jogo de memória](https://github.com/jhacksonh/Teclado_Matricial_TarefaU4C2_EmbarcaTech/blob/main/TECLAS_A_B.md).
+  - **Tecla `C`**: Representa a letra C em código morse.
   - **Tecla `D`**: Representa a letra D em código Morse.
   - **Tecla `#`**: Toca a marcha imperial de Star Wars.
   - **Tecla `*`**:
