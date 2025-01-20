@@ -62,6 +62,38 @@ Este projeto requer os seguintes recursos e ferramentas:
 
 ---
 
+## Estrutura do Projeto 
+
+```plaintext
+├── includes                
+│   ├── botoes_a_b.h        
+│   ├── botoes-1-2.h        
+│   ├── botoes-3-6.h        
+│   ├── botoes8-9.h         
+│   ├── buzzer.h            
+│   ├── configGpios.h       
+│   ├── leds.h              
+│   └── tecladoMatricial4x4.h 
+├── src                     
+│   ├── botoes_a_b.c        
+│   ├── botoes-1-2.c        
+│   ├── botoes-3-6.c        
+│   ├── botoes8-9.c         
+│   ├── buzzer.c            
+│   ├── configGpios.c       
+│   ├── leds.c              
+│   └── tecladoMatricial4x4.c 
+├── .gitignore              
+├── CMakeLists.txt          
+├── diagram.json            
+├── pico_sdk_import.cmake   
+├── README.md               
+├── TECLAS_A_B.md           
+└── wokwi.toml              
+```
+
+---
+
 ## Estrutura do Código
 
 ### Bibliotecas Utilizadas
@@ -75,7 +107,7 @@ Este projeto requer os seguintes recursos e ferramentas:
   - `tecladoMatricial4x4.h`: Funções para o teclado matricial.
   - `leds.h`: Controle de LEDs.
   - `buzzer.h`: Controle do buzzer.
-  - `botoes-1-2.h` e `botoes8-9.h`: Implementações relacionadas a teclas específicas.
+  - `botoes-1-2.h`, `botoes8-9.h`, `botoes_a_b.h` e `botoes-3-6.h`: Implementações relacionadas a teclas específicas.
 
 ---
 
@@ -87,17 +119,19 @@ Este projeto requer os seguintes recursos e ferramentas:
 - Ações baseadas nas teclas pressionadas:
   - **Tecla `0`**: Toca a música do Mario com animação de LEDs.
   - **Tecla `1`**: Toca as notas em duas ordens inversas e executa uma sequência aleatória nos LEDs.
-  - **Tecla `2`**: Toca uma sequência aleatória de notas e executa uma sequência aleatória nos LEDs.
+  - **Tecla `2`**: Toca uma sequência aleatória de notas e executa uma sequência aleatória nos LEDs. 
+  - **Tecla `5`**: Toca as notas da música Fur Elise de Beethoven.
+  - **Tecla `7`**: Toca uma sequência de notas e aciona os LED's em simultêneo.     
+  - **Tecla `8`**: Executa uma rotina para representar mensagens em código Morse com os LEDs.
+  - **Tecla `9`**: Toca a música "Jingle Bells".
+   - **Tecla `A`**: Contém um [jogo de memória](https://github.com/jhacksonh/Teclado_Matricial_TarefaU4C2_EmbarcaTech/blob/main/TECLAS_A_B.md).
+  - **Tecla `B`**: Contém um [jogo de memória](https://github.com/jhacksonh/Teclado_Matricial_TarefaU4C2_EmbarcaTech/blob/main/TECLAS_A_B.md). 
   - **Tecla `D`**: Representa a letra D em código Morse.
   - **Tecla `#`**: Toca a marcha imperial de Star Wars.
   - **Tecla `*`**:
     1. Liga LEDs em sequência.
     2. Emite som no buzzer por 2 segundos.
     3. Reinicia o dispositivo em modo de gravação via USB.
-  - **Tecla `5`**: Toca as notas da música Fur Elise de Beethoven.
-  - **Tecla `7`**: Toca uma sequência de notas e aciona os LED's em simultêneo.     
-  - **Tecla `8`**: Executa uma rotina para representar mensagens em código Morse com os LEDs.
-  - **Tecla `9`**: Toca a música "Jingle Bells".
 
 ---
 
