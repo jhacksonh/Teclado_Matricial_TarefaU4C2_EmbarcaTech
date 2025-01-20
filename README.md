@@ -3,7 +3,7 @@
 Este projeto utiliza o simulador de eletrônica [Wokwi](https://wokwi.com) para implementar o controle de componentes eletrônicos por meio de um teclado matricial 4x4, com o microcontrolador RP2040 presente na placa Raspberry Pi Pico W.
 
 ## Link do vídeo 
-- [Projeto Controle com Teclado Matricial 4x4](colocar-link-aqui)
+- [Vídeo - Projeto Controle com Teclado Matricial 4x4](https://drive.google.com/file/d/1Hh7Bxug_ILJYOFYea_TvD5Ftc8_VZweT/view?usp=drive_link)
 
 ## Funcionalidades
 
@@ -37,7 +37,7 @@ Este projeto requer os seguintes recursos e ferramentas:
 
 ## Desenvolvedores 
 
-- [Jhackson H.](https://github.com/jhacksonh)
+- [Jacson Santos](https://github.com/jhacksonh)
 - [Luiz Rosario](https://github.com/luizzrosario)
 - [Mateus Cavalcanti](https://github.com/mateusjrcavalcanti)
 - [Lucas Silva](https://github.com/silvaluccs)
@@ -65,6 +65,10 @@ Este projeto requer os seguintes recursos e ferramentas:
 ## Estrutura do Projeto 
 
 ```plaintext
+├── docs
+│   ├──doc_teclas_A_B.md
+│   ├──TAREFA 1 -  AS_U4C2O1234A_14_01_2025 - V1.pdf
+│   ├──TAREFA 2 -  AS_U4C2O1234A_14_01_2025 - V1.pdf
 ├── includes                
 │   ├── botoes_a_b.h        
 │   ├── botoes-1-2.h        
@@ -87,8 +91,7 @@ Este projeto requer os seguintes recursos e ferramentas:
 ├── CMakeLists.txt          
 ├── diagram.json            
 ├── pico_sdk_import.cmake   
-├── README.md               
-├── TECLAS_A_B.md           
+├── README.md         
 └── wokwi.toml              
 ```
 

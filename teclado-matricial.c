@@ -42,21 +42,17 @@ void notas_som();
 void piscar_led_quatro_vezes();
 void letra_c_em_morse();
 
-int main()
-{
+int main(){
 
     stdio_init_all();
     // Inicialização dos periféricos
     inicializar_perifericos(LED_VERMELHO, LED_VERDE, LED_AZUL, pinos_linhas, pinos_colunas, BUZZER_PINO);
-    while (true)
-    {
+    while (true){
         char tecla = detectar_tecla(pinos_linhas, pinos_colunas);
-        switch (tecla)
-        {
+        switch (tecla){
         case '0': // Toca a música do Mario e anima leds quando a tecla 0 é pressionada
             tocar_musica_mario();
             break;
-
         case '1':
             Notas_Musicais_Tecla_1(BUZZER_PINO, LED_VERMELHO, LED_VERDE, LED_AZUL);
             break;
